@@ -69,6 +69,36 @@
           these considerations in mind.
         </p>
       </section>
+
+      <section>
+        <h2>Queries & Code Snippets</h2>
+        <h3>All Wikipedias</h3>
+        <pre><code>SELECT ?item ?itemLabel ?langLabel ?code WHERE {
+  ?item wdt:P31 wd:Q10876391.
+  optional{?item wdt:P407 ?lang}.
+  optional {?lang wdt:P305 ?code }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}</code></pre>
+        <a href="https://w.wiki/XL5">Run this query</a>
+
+        <h3>All Languages of an Article</h3>
+        A modified version of
+        <a href="https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples#Names_of_Wikipedia_articles_in_multiple_languages">this</a>
+        query.
+        <pre><code>SELECT DISTINCT ?lang ?name WHERE {
+  ?article schema:about wd:Q2 ;
+              schema:inLanguage ?lang ;
+              schema:name ?name ;
+              schema:isPartOf [ wikibase:wikiGroup "wikipedia" ] .
+ FILTER (!CONTAINS(?name, ':')) .
+}</code></pre>
+        <a href="https://w.wiki/XLA">Run this query</a>
+
+        <h3>Helpful links</h3>
+        <ul>
+          <li><a href="https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format">Wikibase: RDF Dump Format</a></li>
+        </ul>
+      </section>
     </article>
   </body>
 </html>
