@@ -1,0 +1,24 @@
+{
+  "name": "knowledgepie-experiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "csv": "^5.3.2",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prtksxna/knowledgepie-experiments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prtksxna/knowledgepie-experiments/issues"
+  },
+  "homepage": "https://github.com/prtksxna/knowledgepie-experiments#readme"
+}
