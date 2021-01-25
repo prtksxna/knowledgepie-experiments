@@ -1,3 +1,5 @@
+// SPARQL query that finds out the language coverage of a given qID
+
 runQuery = require('./runQuery');
 
 const findLanguageCoverage = function (qid) {

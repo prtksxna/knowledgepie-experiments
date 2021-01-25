@@ -1,3 +1,6 @@
+// Given a SPARQL query it makes a request to Wikidata
+// Returns the results in JSON
+
 const fetch = require('node-fetch');
 
 const runQuery = function ( query ) {

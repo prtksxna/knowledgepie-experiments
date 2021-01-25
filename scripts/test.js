@@ -1,10 +1,12 @@
 const fs = require('fs').promises;
 const findLanguageCoverage = require('./findLanguageCoverage');
+const runStats  = require('./runStats.js');
 
 console.log('Reading vital10.json…');
 fs.readFile( './data_in/vital10.json').then(d => {
   console.log('Opened vital10.json.');
   const v10 = JSON.parse(d);
+  const WAIT_TIME = 2000;
   let coveragePromises = [];
   v10.data.forEach((a,i) => {
     setTimeout(function () {
@@ -16,16 +18,20 @@ fs.readFile( './data_in/vital10.json').then(d => {
         return results;
       });
       coveragePromises.push(coverage);
-    }, i*2000)
+    }, i*WAIT_TIME)
   });
 
   setTimeout(function () {
     Promise.all(coveragePromises).then((v) => {
-      console.log(v);
-      console.log(JSON.stringify(v));
+      var toSave = {
+        rawData: v,
+        articleCoverage: runStats.articleCoverage(v),
+        languageDetails: runStats.languageDetails(v)
+      }
+      console.log(JSON.stringify(toSave));
       // TODO: Save this
     });
-  }, 11 * 2000)
+  }, (v10.data.length + 1) * WAIT_TIME)
 })
 /*
 findLanguageCoverage('Q2').then(function (l) {
