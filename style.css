@@ -1,0 +1,12 @@
+.langCoverage {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 200px;
+}
+
+.langCoverage > div {
+  background: black;
+  color: black;
+  overflow: hidden;
+}
