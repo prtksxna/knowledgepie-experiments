@@ -10,3 +10,19 @@
   color: black;
   overflow: hidden;
 }
+
+.langReport {
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.report-circle {
+  border: 1px solid black;
+  color: black;
+}
+
+.report-circle.is-present {
+  background: black;
+  color: white;
+}

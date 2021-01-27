@@ -1,5 +1,6 @@
 $(function () {
   $.getJSON('/data_out/vital10.lang.json', function (data) {
+    langReport(data.languageDetails,Object.keys(data.articleCoverage));
     langCoverage(data.languageDetails);
   })
 })
@@ -21,5 +22,24 @@ langCoverage = function (data) {
     var $el = $('<div>').text(lang.language + lang.noOfArticles);
     $el.css('opacity',lang.noOfArticles / 10);
     $('.js-vital10-langCoverage').append($el);
+  })
+}
+
+langReport = function (data, allArticles) {
+  $.each(data, function (lang, articles) {
+    $el = $('<div>');
+    $el.append($('<h2>').text(lang));
+    $report = $('<div>');
+    $el.append($report);
+
+    allArticles.forEach(function (article) {
+      $circle = $('<div>').text(article).addClass('report-circle');
+      if (articles.indexOf(article) > -1 ) {
+        $circle.addClass('is-present');
+      }
+      $report.append($circle)
+    })
+
+    $('.js-vital10-langReport').append($el);
   })
 }
