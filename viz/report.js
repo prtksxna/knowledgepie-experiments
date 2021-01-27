@@ -2,6 +2,7 @@ $(function () {
   $.getJSON('/data_out/vital10.lang.json', function (data) {
     langReport(data.languageDetails,Object.keys(data.articleCoverage));
     langCoverage(data.languageDetails);
+    articleBar(data.articleCoverage, Object.keys(data.languageDetails).length);
   })
 })
 
@@ -41,5 +42,15 @@ langReport = function (data, allArticles) {
     })
 
     $('.js-vital10-langReport').append($el);
+  })
+}
+
+articleBar = function (data, totalLangs) {
+  console.log(totalLangs);
+  $container = $('.js-vital10-articleBar');
+  $.each(data, function (article, count) {
+    let percent = Math.round(( count * 100 ) / totalLangs);
+    $container.append($('<h2>').text(article));
+    $container.append($('<div>').addClass('articleBar-bar').css('width', percent + '%').html('&nbsp;'));
   })
 }
