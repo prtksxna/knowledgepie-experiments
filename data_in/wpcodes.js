@@ -1,4 +1,4 @@
-{
+window.language = {
   "en": {
     "name": "English",
     "localName": "English"

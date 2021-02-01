@@ -29,7 +29,7 @@ langCoverage = function (data) {
 langReport = function (data, allArticles) {
   $.each(data, function (lang, articles) {
     $el = $('<div>');
-    $el.append($('<h2>').text(lang));
+    $el.append($('<h4>').text(getWikiName(lang)));
     $report = $('<div>');
     $el.append($report);
 
@@ -43,6 +43,14 @@ langReport = function (data, allArticles) {
 
     $('.js-vital10-langReport').append($el);
   })
+}
+
+getWikiName = function (code) {
+  if (window.language[code] !== undefined) {
+    return window.language[code].name;
+  } else {
+    return code;
+  }
 }
 
 articleBar = function (data, totalLangs) {
