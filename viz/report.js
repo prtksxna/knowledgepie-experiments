@@ -50,7 +50,7 @@ articleBar = function (data, totalLangs) {
   $container = $('.js-vital10-articleBar');
   $.each(data, function (article, count) {
     let percent = Math.round(( count * 100 ) / totalLangs);
-    $container.append($('<h2>').text(article));
+    $container.append($('<h3>').text(article + '('+percent+'%)'));
     $container.append($('<div>').addClass('articleBar-bar').css('width', percent + '%').html('&nbsp;'));
   })
 }
